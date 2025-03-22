@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libra Tech Tools - Convert</title>
+    <link rel="stylesheet" href="../assets/css/convert.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="../assets/img/tools.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Libra Tech Tools</h1>
+            <nav>
+                <ul>
+                    <li><a href="../">Home</a></li>
+                    <li><a href="../tools/">Tools</a></li>
+                    <li><a href="#" class="active">Convert</a></li>
+                    <li><a href="../about/">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Search Bar -->
+        <section class="search-section">
+            <h2>Cari Konversi</h2>
+            <input type="text" id="searchBar" placeholder="Cari jenis konversi...">
+        </section>
+
+        <!-- Kategori Dropdown -->
+        <section class="category-section">
+            <h2>Kategori Konversi</h2>
+            <select id="categoryDropdown">
+                <option value="all">Semua Kategori</option>
+                <option value="temperature">Suhu</option>
+                <option value="length">Panjang</option>
+                <option value="weight">Berat</option>
+                <option value="currency">Mata Uang</option>
+            </select>
+        </section>
+
+        <!-- Daftar Konversi -->
+        <section class="convert-section">
+            <h2>Daftar Konversi</h2>
+            <div class="convert-grid" id="convertGrid">
+                <!-- Daftar konversi akan dimuat di sini -->
+            </div>
+        </section>
+
+        <!-- Favorit / Recently Used -->
+        <section class="favorite-section">
+            <h2>Favorit / Baru Saja Digunakan</h2>
+            <div class="favorite-grid" id="favoriteGrid">
+                <!-- Konversi favorit atau baru digunakan akan dimuat di sini -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2027 Libra Tech Tools. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/libra_id26"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/alif_id26"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/alif-aditya-57b198345/"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/@librachannel2694"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        // Data Konversi
+        const conversions = [
+            { name: "Celsius ke Fahrenheit", category: "temperature", link: "temperature.html", favorite: true },
+            { name: "Fahrenheit ke Celsius", category: "temperature", link: "temperature.html", favorite: false },
+            { name: "Kilometer ke Meter", category: "length", link: "length.html", favorite: false },
+            { name: "Meter ke Kilometer", category: "length", link: "length.html", favorite: false },
+            { name: "Kilogram ke Gram", category: "weight", link: "weight.html", favorite: true },
+            { name: "Gram ke Kilogram", category: "weight", link: "weight.html", favorite: false },
+            { name: "USD ke IDR", category: "currency", link: "currency.html", favorite: true },
+            { name: "IDR ke USD", category: "currency", link: "currency.html", favorite: false },
+        ];
+
+        // Fungsi untuk menampilkan konversi
+        function displayConversions(filter = "all") {
+            const convertGrid = document.getElementById("convertGrid");
+            convertGrid.innerHTML = ""; // Kosongkan grid sebelum menambahkan konversi baru
+
+            conversions.forEach(conversion => {
+                if (filter === "all" || conversion.category === filter) {
+                    const convertCard = document.createElement("div");
+                    convertCard.className = "convert-card";
+                    convertCard.innerHTML = `
+                        <h3>${conversion.name}</h3>
+                        <a href="${conversion.link}" class="btn">Buka Konversi</a>
+                    `;
+                    convertGrid.appendChild(convertCard);
+                }
+            });
+        }
+
+        // Fungsi untuk menampilkan favorit / recently used
+        function displayFavorites() {
+            const favoriteGrid = document.getElementById("favoriteGrid");
+            favoriteGrid.innerHTML = ""; // Kosongkan grid sebelum menambahkan konversi baru
+
+            conversions.forEach(conversion => {
+                if (conversion.favorite) {
+                    const favoriteCard = document.createElement("div");
+                    favoriteCard.className = "favorite-card";
+                    favoriteCard.innerHTML = `
+                        <h3>${conversion.name}</h3>
+                        <a href="${conversion.link}" class="btn">Buka Konversi</a>
+                    `;
+                    favoriteGrid.appendChild(favoriteCard);
+                }
+            });
+        }
+
+        // Event listener untuk dropdown kategori
+        document.getElementById("categoryDropdown").addEventListener("change", (e) => {
+            displayConversions(e.target.value);
+        });
+
+        // Event listener untuk search bar
+        document.getElementById("searchBar").addEventListener("input", (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredConversions = conversions.filter(conversion => conversion.name.toLowerCase().includes(searchTerm));
+            const convertGrid = document.getElementById("convertGrid");
+            convertGrid.innerHTML = "";
+
+            filteredConversions.forEach(conversion => {
+                const convertCard = document.createElement("div");
+                convertCard.className = "convert-card";
+                convertCard.innerHTML = `
+                    <h3>${conversion.name}</h3>
+                    <a href="${conversion.link}" class="btn">Buka Konversi</a>
+                `;
+                convertGrid.appendChild(convertCard);
+            });
+        });
+
+        // Tampilkan konversi dan favorit saat halaman dimuat
+        displayConversions();
+        displayFavorites();
+    </script>
+</body>
+</html>
