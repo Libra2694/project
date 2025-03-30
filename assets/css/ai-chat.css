@@ -1,0 +1,343 @@
+:root {
+    --primary-color: #00bcd4;
+    --secondary-color: #2a2a40;
+    --dark-bg: #1e1e2f;
+    --message-ai-bg: #3a3a5a;
+    --message-user-bg: #00bcd4;
+    --text-color: #ffffff;
+    --text-muted: #cccccc;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a2e;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+width: 90%;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+header {
+background-color: #2a2a40;
+padding: 20px 0;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+margin: 0;
+font-size: 2em;
+text-align: center;
+}
+
+nav ul {
+list-style: none;
+padding: 0;
+text-align: center;
+}
+
+nav ul li {
+display: inline;
+margin: 0 15px;
+}
+
+nav ul li a {
+color: #ffffff;
+text-decoration: none;
+font-size: 1.2em;
+}
+
+nav ul li a:hover, nav ul li a.active {
+color: #00bcd4;
+}
+
+.ai-chat-container {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chat-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.chat-header h2 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+.chat-header .ai-name {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+
+.chat-box {
+    height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--dark-bg);
+    border-radius: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--dark-bg);
+}
+
+.chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 80%;
+    line-height: 1.5;
+    word-wrap: break-word;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.user-message {
+    background-color: var(--message-user-bg);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+}
+
+.ai-message {
+    background-color: var(--message-ai-bg);
+    margin-right: auto;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #4a4a6a;
+}
+
+.message-header {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.ai-message .message-header {
+    color: var(--primary-color);
+}
+
+.user-message .message-header {
+    color: white;
+}
+
+.message-header i {
+    margin-right: 8px;
+    font-size: 0.9em;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#userInput {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--dark-bg);
+    color: white;
+    font-size: 1em;
+    border: 1px solid var(--message-ai-bg);
+    transition: border 0.3s;
+}
+
+#userInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+#sendButton {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#sendButton:hover {
+    background-color: #0097a7;
+    transform: translateY(-2px);
+}
+
+#sendButton:active {
+    transform: translateY(0);
+}
+
+.typing-indicator {
+    display: none;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 5px;
+    font-size: 0.9em;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Enhanced message formatting */
+.message-content {
+    line-height: 1.6;
+}
+
+.message strong {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.message em {
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.message u {
+    text-decoration: underline;
+    color: #ffcc00;
+}
+
+.message ul, .message ol {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.message ul {
+    list-style-type: disc;
+}
+
+.message ol {
+    list-style-type: decimal;
+}
+
+.message li {
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.message pre {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+.message code {
+    font-family: monospace;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.message-block {
+    margin: 10px 0;
+    padding: 10px;
+    border-left: 3px solid var(--primary-color);
+    background-color: rgba(0, 188, 212, 0.1);
+}
+
+.message-timestamp {
+    font-size: 0.7em;
+    color: var(--text-muted);
+    text-align: right;
+    margin-top: 5px;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    padding: 20px 0;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-links a {
+    color: var(--text-color);
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+    .message {
+        max-width: 90%;
+        padding: 10px 12px;
+    }
+    
+    #userInput {
+        padding: 10px 12px;
+    }
+    
+    #sendButton {
+        padding: 10px 15px;
+    }
+    
+    .chat-header h2 {
+        font-size: 1.5em;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+ /* Tambahkan style ini */
+#recommendation-container {
+animation: fadeIn 0.5s ease-out;
+}
+
+#recommendation-container div[style*="width:100%"]:hover {
+color: #00bcd4 !important;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}

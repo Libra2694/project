@@ -1,0 +1,282 @@
+body {
+    background-color: #0d1117; /* Hitam kebiruan */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Container utama */
+/* .container {
+    max-width: 500px;
+    margin: auto;
+    margin-top: 50px;
+} */
+
+/* Card styling */
+.card {
+    background: #000000; /* Dark gray */
+    border: 2px solid #00e1ff; /* Neon Cyan */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
+}
+
+/* Output layar kalkulator */
+.output input {
+    width: 100%;
+    font-size: 1.5em;
+    background: transparent;
+    color: #00e1ff; /* Neon Cyan */
+    text-shadow: 0 0 5px rgba(0, 225, 255, 0.8);
+}
+
+/* Tombol umum */
+button {
+    font-size: 1.2em;
+    color: #ffffff;
+    background: #1f2937; /* Abu-abu gelap */
+    border: 2px solid #00e1ff; /* Neon Cyan */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 225, 255, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efek hover untuk tombol */
+button:hover {
+    background: #00e1ff;
+    color: #00a2ff;
+    box-shadow: 0 0 15px rgba(0, 225, 255, 0.8);
+}
+
+/* Tombol khusus */
+#calculate {
+    background: #00ff7b; /* Neon Green */
+    border-color: #00ff7b;
+    box-shadow: 0 0 10px rgba(0, 255, 123, 0.8);
+}
+
+#calculate:hover {
+    background: #1eff0a;
+    box-shadow: 0 0 20px rgba(0, 255, 123, 1);
+}
+
+/* Tombol AC (reset) */
+button[onclick="clearData()"] {
+    background: #ff1744; /* Neon Red */
+    border-color: #ff1744;
+    box-shadow: 0 0 10px rgba(255, 23, 68, 0.8);
+}
+
+button[onclick="clearData()"]:hover {
+    background: #ff5252;
+    box-shadow: 0 0 20px rgba(255, 23, 68, 1);
+}
+
+/* Animasi ketika tombol ditekan */
+button:active {
+    transform: scale(0.95);
+}
+
+/* Trigonometri, logaritma, dan operasi matematika lainnya */
+#trigonometric-sin, #trigonometric-cos, #trigonometric-tan,
+button[onclick*="log"], button[onclick*="sqrt"], button[onclick*="fact"] {
+    background: #c7ca06; /* Neon Purple */
+    border-color: #6a0dad;
+    box-shadow: 0 0 10px rgba(106, 13, 173, 0.8);
+}
+
+#trigonometric-sin:hover, #trigonometric-cos:hover, #trigonometric-tan:hover,
+button[onclick*="log"]:hover, button[onclick*="sqrt"]:hover, button[onclick*="fact"]:hover {
+    background: #9c27b0;
+    box-shadow: 0 0 20px rgba(156, 39, 176, 1);
+}
+
+/* Efek Glow untuk mode gelap */
+@keyframes neonGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 225, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
+    }
+}
+
+/* Efek Glow Aktif */
+.output input, button {
+    animation: neonGlow 1.5s infinite alternate;
+}
+
+.output input:focus {
+    outline: none;
+}
+
+/* Tombol angka */
+button.number {
+    background: #1e88e5; /* Neon Blue */
+    color: #ffffff; /* Putih */
+    border: 2px solid #00e1ff;
+    box-shadow: 0 0 10px rgba(30, 136, 229, 0.8);
+    font-weight: bold;
+}
+
+/* Hover efek untuk tombol angka */
+button.number:hover {
+    background: #00e1ff;
+    color: #0d1117; /* Hitam kebiruan */
+    box-shadow: 0 0 20px rgba(0, 225, 255, 1);
+}
+
+/* Efek ketika tombol ditekan */
+button.number:active {
+    transform: scale(0.95);
+}
+
+/* Warna angka di layar output */
+.output input {
+    color: #00e1ff; /* Neon Cyan */
+    font-weight: bold;
+    text-align: right;
+    text-shadow: 0 0 10px rgba(0, 225, 255, 0.8);
+}
+
+/* Tombol operator dasar (+, -, ×, ÷) */
+button.operator {
+    background: #ff9100; /* Neon Orange */
+    color: #ffffff;
+    border: 2px solid #ffab40;
+    box-shadow: 0 0 10px rgba(255, 145, 0, 0.8);
+    font-weight: bold;
+}
+
+/* Hover efek tombol operator */
+button.operator:hover {
+    background: #ffab40;
+    color: #0d1117;
+    box-shadow: 0 0 20px rgba(255, 171, 64, 1);
+}
+
+/* Tombol fungsi khusus (π, !, (), √) */
+button.function {
+    background: #c51162; /* Neon Pink */
+    color: #ffffff;
+    border: 2px solid #ff4081;
+    box-shadow: 0 0 10px rgba(197, 17, 98, 0.8);
+    font-weight: bold;
+}
+
+/* Hover efek tombol fungsi */
+button.function:hover {
+    background: #ff4081;
+    color: #0d1117;
+    box-shadow: 0 0 20px rgba(255, 64, 129, 1);
+}
+
+/* Efek ketika tombol ditekan */
+button.operator:active, button.function:active {
+    transform: scale(0.95);
+}
+
+button.clear {
+    background: #f44336; /* Neon Red */
+    color: #ffffff;
+    border: 2px solid #ff5252;
+    box-shadow: 0 0 10px rgba(244, 67, 54, 0.8);
+    font-weight: bold;
+}
+
+button.clear:hover {
+    background: #ff0000;
+    color: #0d1117;
+    box-shadow: 0 0 20px rgba(255, 82, 82, 1);
+}
+
+/* Container untuk tombol kembali dan judul kalkulator */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Tombol di kiri, teks di tengah */
+    padding: 10px 20px; /* Tambahkan padding agar lebih rapi */
+}
+
+/* Posisi teks di tengah */
+.calculator-title {
+    flex-grow: 1; /* Membantu agar teks tetap di tengah */
+    text-align: center;
+    font-size: 1.8em;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 225, 255, 0.8);
+}
+
+/* Tombol kembali tetap di pinggir kiri */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    background: #00e1ff; /* Neon Cyan */
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 225, 255, 0.8);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Ikon Panah */
+.back-button i {
+    margin-right: 5px;
+}
+
+/* Hover Effect */
+.back-button:hover {
+    background: #0097a7;
+    box-shadow: 0 0 15px rgba(0, 151, 167, 1);
+    color: white;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e2f;
+    color: #ffffff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #2a2a40;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #00bcd4;
+}
