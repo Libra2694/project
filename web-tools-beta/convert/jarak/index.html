@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Konversi Panjang - Libra Tech Tools</title>
+    <link rel="stylesheet" href="../../assets/css/jarak.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="../../assets/img/tools.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Libra Tech Tools</h1>
+            <nav>
+                <ul>
+                    <li><a href="../../">Home</a></li>
+                    <li><a href="../../tools/">Tools</a></li>
+                    <li><a href="../../convert/">Convert</a></li>
+                    <li><a href="../../about/">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="converter-container">
+            <h2 class="converter-title">Konversi Satuan Panjang</h2>
+            
+            <div class="converter-form">
+                <div class="input-row">
+                    <div class="input-column">
+                        <div class="input-group">
+                            <label for="fromValue">Nilai</label>
+                            <input type="number" id="fromValue" placeholder="Masukkan nilai">
+                        </div>
+                    </div>
+                    
+                    <div class="input-column">
+                        <div class="input-group">
+                            <label for="fromUnit">Dari Satuan</label>
+                            <select id="fromUnit" size="1" onfocus="this.size=5;" onblur="this.size=1;" onchange="this.size=1; this.blur();">
+                                <option value="km">Kilometer (km)</option>
+                                <option value="hm">Hektometer (hm)</option>
+                                <option value="dam">Dekameter (dam)</option>
+                                <option value="m" selected>Meter (m)</option>
+                                <option value="dm">Desimeter (dm)</option>
+                                <option value="cm">Centimeter (cm)</option>
+                                <option value="mm">Milimeter (mm)</option>
+                                <option value="mi">Mil (mi)</option>
+                                <option value="yd">Yard (yd)</option>
+                                <option value="ft">Kaki (ft)</option>
+                                <option value="in">Inci (in)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-column">
+                        <div class="input-group">
+                            <label for="toUnit">Ke Satuan</label>
+                            <select id="toUnit" size="1" onfocus="this.size=5;" onblur="this.size=1;" onchange="this.size=1; this.blur();">
+                                <option value="km">Kilometer (km)</option>
+                                <option value="hm">Hektometer (hm)</option>
+                                <option value="dam">Dekameter (dam)</option>
+                                <option value="m">Meter (m)</option>
+                                <option value="dm">Desimeter (dm)</option>
+                                <option value="cm" selected>Centimeter (cm)</option>
+                                <option value="mm">Milimeter (mm)</option>
+                                <option value="mi">Mil (mi)</option>
+                                <option value="yd">Yard (yd)</option>
+                                <option value="ft">Kaki (ft)</option>
+                                <option value="in">Inci (in)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="converter-buttons">
+                    <button class="btn btn-convert" onclick="convertLength()">
+                        <i class="fas fa-exchange-alt"></i> Konversi
+                    </button>
+                    <button class="btn btn-reset" onclick="resetForm()">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                    <button class="btn btn-switch" onclick="switchUnits()">
+                        <i class="fas fa-random"></i> Tukar
+                    </button>
+                </div>
+                
+                <div class="result-container" id="resultContainer">
+                    <div class="result-title">Hasil Konversi:</div>
+                    <div class="result-value" id="resultValue"></div>
+                    
+                    <div class="result-title" style="margin-top: 20px;">Hasil dalam Semua Satuan:</div>
+                    <div class="all-units-result" id="allUnitsResult"></div>
+                </div>
+
+                <div class="formula-info">
+                    <div class="formula-title">Rumus Konversi Panjang:</div>
+                    <div class="formula-item"><strong>1 Kilometer (km)</strong> = 1000 Meter (m)</div>
+                    <div class="formula-item"><strong>1 Hektometer (hm)</strong> = 100 Meter (m)</div>
+                    <div class="formula-item"><strong>1 Dekameter (dam)</strong> = 10 Meter (m)</div>
+                    <div class="formula-item"><strong>1 Meter (m)</strong> = 10 Desimeter (dm)</div>
+                    <div class="formula-item"><strong>1 Desimeter (dm)</strong> = 10 Centimeter (cm)</div>
+                    <div class="formula-item"><strong>1 Centimeter (cm)</strong> = 10 Milimeter (mm)</div>
+                    <div class="formula-item"><strong>1 Mil (mi)</strong> ≈ 1609.344 Meter (m)</div>
+                    <div class="formula-item"><strong>1 Yard (yd)</strong> = 0.9144 Meter (m)</div>
+                    <div class="formula-item"><strong>1 Kaki (ft)</strong> = 0.3048 Meter (m)</div>
+                    <div class="formula-item"><strong>1 Inci (in)</strong> = 0.0254 Meter (m)</div>
+                    <div class="formula-item"><strong>1 Meter (m)</strong> ≈ 3.28084 Kaki (ft)</div>
+                    <div class="formula-item"><strong>1 Kilometer (km)</strong> ≈ 0.621371 Mil (mi)</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2027 Libra Tech Tools. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/libra_id26"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/alif_id26"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/alif-aditya-57b198345/"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/@librachannel2694"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/jarak.js"></script>
+</body>
+</html>

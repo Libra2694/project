@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Konversi Mata Uang - Libra Tech Tools</title>
+    <link rel="stylesheet" href="../../assets/css/uang.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="../../assets/img/tools.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Libra Tech Tools</h1>
+            <nav>
+                <ul>
+                    <li><a href="../../">Home</a></li>
+                    <li><a href="../">Tools</a></li>
+                    <li><a href="../../convert/">Convert</a></li>
+                    <li><a href="../../about/">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="converter-container">
+            <h2 class="converter-title">Konversi Mata Uang & Crypto</h2>
+            
+            <div class="converter-form">
+                <div class="input-row">
+                    <div class="input-column">
+                        <div class="input-group1">
+                            <label for="inputAmount">Jumlah</label>
+                            <input type="number" id="inputAmount" placeholder="Masukkan jumlah" step="any">
+                        </div>
+                    </div>
+                    <div class="input-column">
+                        <div class="input-group">
+                            <label for="fromCurrency">Dari</label>
+                            <select id="fromCurrency">
+                                <!-- Mata Uang Fiat -->
+                                <optgroup label="Mata Uang Fiat">
+                                    <option value="USD">USD (Dolar AS)</option>
+                                    <option value="IDR" selected>IDR (Rupiah)</option>
+                                    <option value="EUR">EUR (Euro)</option>
+                                    <option value="GBP">GBP (Poundsterling)</option>
+                                    <option value="JPY">JPY (Yen Jepang)</option>
+                                    <option value="SGD">SGD (Dolar Singapura)</option>
+                                </optgroup>
+                                <!-- Crypto -->
+                                <optgroup label="Mata Uang Digital">
+                                    <option value="BTC" class="crypto-option">
+                                        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" class="crypto-icon"> BTC (Bitcoin)
+                                    </option>
+                                    <option value="ETH" class="crypto-option">
+                                        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" class="crypto-icon"> ETH (Ethereum)
+                                    </option>
+                                    <option value="BNB" class="crypto-option">
+                                        <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" class="crypto-icon"> BNB (Binance Coin)
+                                    </option>
+                                    <option value="XRP" class="crypto-option">
+                                        <img src="https://cryptologos.cc/logos/xrp-xrp-logo.png" class="crypto-icon"> XRP (Ripple)
+                                    </option>
+                                    <option value="DOGE" class="crypto-option">
+                                        <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png" class="crypto-icon"> DOGE (Dogecoin)
+                                    </option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-column">
+                        <div class="input-group">
+                            <label for="toCurrency">Ke</label>
+                            <select id="toCurrency">
+                                <!-- Mata Uang Fiat -->
+                                <optgroup label="Mata Uang Fiat">
+                                    <option value="USD" selected>USD (Dolar AS)</option>
+                                    <option value="IDR">IDR (Rupiah)</option>
+                                    <option value="EUR">EUR (Euro)</option>
+                                    <option value="GBP">GBP (Poundsterling)</option>
+                                    <option value="JPY">JPY (Yen Jepang)</option>
+                                    <option value="SGD">SGD (Dolar Singapura)</option>
+                                </optgroup>
+                                <!-- Crypto -->
+                                <optgroup label="Mata Uang Digital">
+                                    <option value="BTC" class="crypto-option">
+                                        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" class="crypto-icon"> BTC (Bitcoin)
+                                    </option>
+                                    <option value="ETH" class="crypto-option">
+                                        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" class="crypto-icon"> ETH (Ethereum)
+                                    </option>
+                                    <option value="BNB" class="crypto-option">
+                                        <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" class="crypto-icon"> BNB (Binance Coin)
+                                    </option>
+                                    <option value="XRP" class="crypto-option">
+                                        <img src="https://cryptologos.cc/logos/xrp-xrp-logo.png" class="crypto-icon"> XRP (Ripple)
+                                    </option>
+                                    <option value="DOGE" class="crypto-option">
+                                        <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png" class="crypto-icon"> DOGE (Dogecoin)
+                                    </option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="converter-buttons">
+                    <button class="btn btn-convert" onclick="convertCurrency()">
+                        <i class="fas fa-exchange-alt"></i> Konversi
+                    </button>
+                    <button class="btn btn-reset" onclick="resetForm()">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                    <button class="btn btn-switch" onclick="switchCurrencies()">
+                        <i class="fas fa-random"></i> Tukar
+                    </button>
+                </div>
+                
+                <div class="result-container" id="resultContainer">
+                    <div class="result-title">Hasil Konversi:</div>
+                    <div class="result-value" id="resultValue"></div>
+                    <div class="rate-info" id="rateInfo"></div>
+                </div>
+                
+                <div class="formula-info">
+                    <div class="formula-title">Rumus Konversi:</div>
+                    <div class="formula-item"><strong>Fiat ke Fiat:</strong> Nilai × Kurs</div>
+                    <div class="formula-item"><strong>Crypto ke Fiat:</strong> Jumlah Crypto × Harga Crypto</div>
+                    <div class="formula-item"><strong>Fiat ke Crypto:</strong> Nilai Fiat ÷ Harga Crypto</div>
+                    <div class="formula-item"><strong>Crypto ke Crypto:</strong> (Jumlah Crypto × Harga Crypto Asal) ÷ Harga Crypto Tujuan</div>
+                    <div class="formula-item">Kurs diperbarui: <span id="lastUpdated">-</span></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2027 Libra Tech Tools. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/libra_id26"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/alif_id26"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/alif-aditya-57b198345/"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/@librachannel2694"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+ <script src="../../assets/js/uang.js"></script>
+</body>
+</html>
